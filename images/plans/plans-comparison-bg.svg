@@ -1,0 +1,58 @@
+<!-- ============================================================
+     WASHCLUB — plans/plans-comparison-bg.svg
+     STATUS:    PLACEHOLDER — ganti dengan background final
+     SECTION:   Subscription Plans — background decorative
+     RATIO:     16:9 (wide)  1440×810px
+     STYLE:     Abstract gradient blobs · very subtle · no hard edges
+     AI PROMPT:
+       Abstract SVG background illustration for a pricing section.
+       Large soft gradient blobs in very light blue (#EBF5FF) and
+       near-white, overlapping organically. No hard edges, fully
+       abstract, extremely subtle. One faint circular arc in
+       bottom-right in #56CCF2 at 5% opacity. Wide landscape format,
+       transparent outer edges. SVG. Similar to Stripe pricing page bg.
+     ============================================================ -->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1440 810" width="1440" height="810"
+     role="img" aria-hidden="true">
+
+  <defs>
+    <radialGradient id="blob-1" cx="25%" cy="40%" r="45%">
+      <stop offset="0%"   stop-color="#EBF5FF" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#EBF5FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="blob-2" cx="70%" cy="60%" r="50%">
+      <stop offset="0%"   stop-color="#E0F7FE" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#E0F7FE" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="blob-3" cx="50%" cy="20%" r="40%">
+      <stop offset="0%"   stop-color="#F0F9FF" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#F0F9FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Transparent base -->
+  <rect width="1440" height="810" fill="transparent"/>
+
+  <!-- Blob 1 (top-left) -->
+  <ellipse cx="360" cy="324" rx="420" ry="360" fill="url(#blob-1)"/>
+
+  <!-- Blob 2 (right) -->
+  <ellipse cx="1008" cy="486" rx="480" ry="405" fill="url(#blob-2)"/>
+
+  <!-- Blob 3 (top-center) -->
+  <ellipse cx="720" cy="162" rx="380" ry="280" fill="url(#blob-3)"/>
+
+  <!-- Very subtle arc bottom-right -->
+  <circle cx="1400" cy="780" r="200" fill="none"
+          stroke="#56CCF2" stroke-width="80" opacity="0.05"/>
+  <circle cx="1400" cy="780" r="300" fill="none"
+          stroke="#56CCF2" stroke-width="40" opacity="0.03"/>
+
+  <!-- Placeholder label -->
+  <rect x="0" y="774" width="1440" height="36" fill="rgba(45,156,219,0.04)"/>
+  <text x="720" y="796" text-anchor="middle"
+        font-family="Poppins, sans-serif" font-size="13" fill="#2D9CDB" opacity="0.5">
+    [PLACEHOLDER] plans/plans-comparison-bg.svg — background dekoratif
+  </text>
+</svg>

@@ -1,0 +1,101 @@
+<!-- ============================================================
+     WASHCLUB — problem/problem-uncontrolled-cost.svg
+     STATUS:    PLACEHOLDER — ganti dengan ilustrasi final
+     SECTION:   Problem — Pain Point 5
+     RATIO:     1:1  400×400px
+     STYLE:     Flat · jagged cost line chart · wallet/card empty
+     AI PROMPT:
+       Minimal flat illustration of a simple line chart going jaggedly
+       upward (unpredictable monthly costs), with currency symbols (Rp)
+       floating around it. A small abstract wallet icon at the bottom
+       looking "empty". Colors: #2D9CDB chart line, light red area
+       #FEE2E2, white bg. Flat geometric startup illustration, clean
+       data visualization style. Square. SVG style.
+     ============================================================ -->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 400 400" width="400" height="400"
+     role="img" aria-label="[PLACEHOLDER] Ilustrasi biaya laundry tidak terkontrol">
+
+  <!-- Background -->
+  <rect width="400" height="400" rx="24" fill="#EBF5FF"/>
+
+  <!-- Chart area card -->
+  <rect x="48" y="60" width="304" height="220" rx="16" fill="white" stroke="#E2E8F0" stroke-width="1.5"/>
+
+  <!-- Chart title -->
+  <text x="72" y="92" font-family="Poppins, sans-serif" font-size="12" font-weight="700" fill="#1E293B">Pengeluaran Laundry</text>
+  <rect x="240" y="78" width="80" height="20" rx="10" fill="#FEE2E2"/>
+  <text x="280" y="92" text-anchor="middle" font-family="Poppins, sans-serif" font-size="9" font-weight="600" fill="#DC2626">Tidak Terkontrol</text>
+
+  <!-- Y-axis labels -->
+  <text x="62" y="125" font-family="Poppins, sans-serif" font-size="8" fill="#94A3B8" text-anchor="end">150k</text>
+  <text x="62" y="155" font-family="Poppins, sans-serif" font-size="8" fill="#94A3B8" text-anchor="end">100k</text>
+  <text x="62" y="185" font-family="Poppins, sans-serif" font-size="8" fill="#94A3B8" text-anchor="end">50k</text>
+  <text x="62" y="215" font-family="Poppins, sans-serif" font-size="8" fill="#94A3B8" text-anchor="end">0</text>
+
+  <!-- Grid lines -->
+  <line x1="68" y1="122" x2="332" y2="122" stroke="#F1F5F9" stroke-width="1"/>
+  <line x1="68" y1="152" x2="332" y2="152" stroke="#F1F5F9" stroke-width="1"/>
+  <line x1="68" y1="182" x2="332" y2="182" stroke="#F1F5F9" stroke-width="1"/>
+  <line x1="68" y1="212" x2="332" y2="212" stroke="#F1F5F9" stroke-width="1"/>
+
+  <!-- Red area under jagged line -->
+  <polygon
+    points="72,212 112,182 152,152 176,168 216,108 240,132 280,96 308,112 332,86 332,212"
+    fill="#FEE2E2" opacity="0.55"/>
+
+  <!-- Jagged unpredictable line -->
+  <polyline
+    points="72,195 112,178 152,148 176,165 216,105 240,128 280,92 308,108 332,82"
+    stroke="#EF4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- Data points -->
+  <circle cx="72"  cy="195" r="4" fill="white" stroke="#EF4444" stroke-width="2"/>
+  <circle cx="112" cy="178" r="4" fill="white" stroke="#EF4444" stroke-width="2"/>
+  <circle cx="152" cy="148" r="4" fill="white" stroke="#EF4444" stroke-width="2"/>
+  <circle cx="176" cy="165" r="4" fill="white" stroke="#EF4444" stroke-width="2"/>
+  <circle cx="216" cy="105" r="4" fill="white" stroke="#EF4444" stroke-width="2"/>
+  <circle cx="240" cy="128" r="4" fill="white" stroke="#EF4444" stroke-width="2"/>
+  <circle cx="280" cy="92"  r="4" fill="white" stroke="#EF4444" stroke-width="2"/>
+  <circle cx="308" cy="108" r="4" fill="white" stroke="#EF4444" stroke-width="2"/>
+  <circle cx="332" cy="82"  r="5" fill="#EF4444" stroke="#EF4444" stroke-width="2"/>
+
+  <!-- X-axis months -->
+  <g font-family="Poppins, sans-serif" font-size="8" text-anchor="middle" fill="#94A3B8">
+    <text x="72"  y="226">Jan</text>
+    <text x="112" y="226">Feb</text>
+    <text x="152" y="226">Mar</text>
+    <text x="192" y="226">Apr</text>
+    <text x="232" y="226">Mei</text>
+    <text x="272" y="226">Jun</text>
+    <text x="312" y="226">Jul</text>
+  </g>
+
+  <!-- Floating Rp symbols -->
+  <text x="95" y="160" font-family="Poppins, sans-serif" font-size="14" font-weight="700" fill="#EF4444" opacity="0.35">Rp</text>
+  <text x="248" y="80"  font-family="Poppins, sans-serif" font-size="18" font-weight="700" fill="#EF4444" opacity="0.25">Rp</text>
+  <text x="165" y="95"  font-family="Poppins, sans-serif" font-size="12" font-weight="700" fill="#EF4444" opacity="0.3">Rp</text>
+
+  <!-- Empty wallet illustration -->
+  <g transform="translate(128, 312)">
+    <rect x="0" y="0" width="144" height="60" rx="14" fill="white" stroke="#E2E8F0" stroke-width="1.5"/>
+    <!-- Wallet flap -->
+    <rect x="0" y="0" width="144" height="22" rx="14" fill="#F1F5F9"/>
+    <rect x="0" y="16" width="144" height="6" fill="#F1F5F9"/>
+    <!-- Coin slot empty -->
+    <ellipse cx="72" cy="40" rx="18" ry="12" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5"/>
+    <text x="72" y="44" text-anchor="middle" font-family="Poppins, sans-serif" font-size="9" fill="#CBD5E1">kosong</text>
+    <!-- Sad face indicator lines -->
+    <line x1="108" y1="28" x2="120" y2="28" stroke="#CBD5E1" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="108" y1="35" x2="120" y2="35" stroke="#CBD5E1" stroke-width="1.5" stroke-linecap="round"/>
+    <text x="30" y="44" font-family="Poppins, sans-serif" font-size="18" fill="#CBD5E1">Rp</text>
+    <text x="22" y="57" font-family="Poppins, sans-serif" font-size="8" fill="#EF4444" opacity="0.6">Habis lagi...</text>
+  </g>
+
+  <!-- Placeholder label -->
+  <rect x="0" y="370" width="400" height="30" rx="0" fill="rgba(45,156,219,0.08)"/>
+  <text x="200" y="390" text-anchor="middle"
+        font-family="Poppins, sans-serif" font-size="10" fill="#2D9CDB">
+    [PLACEHOLDER] problem/problem-uncontrolled-cost.svg
+  </text>
+</svg>

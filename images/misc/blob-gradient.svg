@@ -1,0 +1,28 @@
+<!-- ============================================================
+     WASHCLUB — misc/blob-gradient.svg
+     STATUS:    READY TO USE (tidak perlu diganti)
+     SECTION:   Hero section — background glow behind phone mockup
+     RATIO:     1:1  800×800px viewbox
+     USAGE:     <img> or CSS background, position: absolute behind hero visual
+     CSS:       position: absolute; opacity: 0.6; z-index: 0;
+                pointer-events: none; width: 60%; right: -5%; top: 5%;
+     ============================================================ -->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 800 800" width="800" height="800">
+  <defs>
+    <radialGradient id="blob-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#56CCF2" stop-opacity="0.60"/>
+      <stop offset="50%"  stop-color="#2D9CDB" stop-opacity="0.20"/>
+      <stop offset="100%" stop-color="#2D9CDB" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- Organic blob shape — slightly irregular circle -->
+  <path d="M 400 80
+           C 520 70, 640 130, 680 240
+           C 720 350, 700 460, 640 545
+           C 580 630, 480 690, 370 695
+           C 260 700, 150 650, 100 555
+           C 50  460, 55  340, 100 240
+           C 145 140, 280 90, 400 80 Z"
+        fill="url(#blob-glow)"/>
+</svg>

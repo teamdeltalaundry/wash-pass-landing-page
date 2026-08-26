@@ -1,0 +1,121 @@
+<!-- ============================================================
+     WASHCLUB — problem/problem-forgot-schedule.svg
+     STATUS:    PLACEHOLDER — ganti dengan ilustrasi final
+     SECTION:   Problem — Pain Point 3
+     RATIO:     1:1  400×400px
+     STYLE:     Flat · calendar with X marks · abstract human confused
+     AI PROMPT:
+       Minimal flat illustration of a monthly calendar with several
+       dates marked with red X marks and question marks, one date
+       highlighted with a laundry basket icon. Abstract human
+       silhouette standing next to calendar looking confused (head
+       tilted, no facial features). Colors: white calendar, #2D9CDB
+       grid lines, red X #EF4444, very light blue bg. Flat startup
+       style. Square. SVG style.
+     ============================================================ -->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 400 400" width="400" height="400"
+     role="img" aria-label="[PLACEHOLDER] Ilustrasi lupa jadwal laundry">
+
+  <!-- Background -->
+  <rect width="400" height="400" rx="24" fill="#EBF5FF"/>
+
+  <!-- Calendar card -->
+  <rect x="60" y="60" width="240" height="260" rx="16" fill="white" stroke="#E2E8F0" stroke-width="1.5"/>
+
+  <!-- Calendar header -->
+  <rect x="60" y="60" width="240" height="48" rx="16" fill="#2D9CDB"/>
+  <rect x="60" y="88" width="240" height="20" fill="#2D9CDB"/>
+  <text x="180" y="81" text-anchor="middle" font-family="Poppins, sans-serif" font-size="14" font-weight="700" fill="white">Juli 2026</text>
+  <!-- Day headers -->
+  <g font-family="Poppins, sans-serif" font-size="9" text-anchor="middle" fill="rgba(255,255,255,0.8)">
+    <text x="90"  y="102">Sen</text>
+    <text x="124" y="102">Sel</text>
+    <text x="158" y="102">Rab</text>
+    <text x="192" y="102">Kam</text>
+    <text x="226" y="102">Jum</text>
+    <text x="260" y="102">Sab</text>
+    <text x="294" y="102">Min</text>
+  </g>
+
+  <!-- Calendar grid rows — simplified 4 rows -->
+  <!-- Row 1 -->
+  <g font-family="Poppins, sans-serif" font-size="10" text-anchor="middle" fill="#64748B">
+    <text x="90"  y="130">1</text>
+    <text x="124" y="130">2</text>
+    <!-- Date 3: X -->
+    <line x1="150" y1="122" x2="166" y2="136" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="166" y1="122" x2="150" y2="136" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="192" y="130">4</text>
+    <text x="226" y="130">5</text>
+    <!-- Date 6: X -->
+    <line x1="252" y1="122" x2="268" y2="136" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="268" y1="122" x2="252" y2="136" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="294" y="130">7</text>
+  </g>
+
+  <!-- Row 2 -->
+  <g font-family="Poppins, sans-serif" font-size="10" text-anchor="middle" fill="#64748B">
+    <text x="90"  y="162">8</text>
+    <!-- Date 9: X -->
+    <line x1="116" y1="154" x2="132" y2="168" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="132" y1="154" x2="116" y2="168" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="158" y="162">10</text>
+    <text x="192" y="162">11</text>
+    <!-- Date 12: highlighted — laundry day! -->
+    <circle cx="226" cy="158" r="14" fill="#DCFCE7" stroke="#22C55E" stroke-width="2"/>
+    <text x="226" y="163" fill="#15803d" font-weight="700">12</text>
+    <!-- small basket icon -->
+    <rect x="219" y="147" width="14" height="8" rx="2" fill="#22C55E" opacity="0.4"/>
+    <line x1="222" y1="147" x2="222" y2="143" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="229" y1="147" x2="229" y2="143" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round"/>
+    <text x="260" y="162">13</text>
+    <text x="294" y="162">14</text>
+  </g>
+
+  <!-- Row 3 -->
+  <g font-family="Poppins, sans-serif" font-size="10" text-anchor="middle" fill="#64748B">
+    <!-- Date 15: X -->
+    <line x1="82"  y1="186" x2="98"  y2="200" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="98"  y1="186" x2="82"  y2="200" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="124" y="194">16</text>
+    <text x="158" y="194">17</text>
+    <!-- Date 18: ? mark -->
+    <text x="192" y="197" font-size="16" font-weight="800" fill="#F59E0B">?</text>
+    <text x="226" y="194">19</text>
+    <!-- Date 20: X -->
+    <line x1="252" y1="186" x2="268" y2="200" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="268" y1="186" x2="252" y2="200" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="294" y="194">21</text>
+  </g>
+
+  <!-- Row 4 -->
+  <g font-family="Poppins, sans-serif" font-size="10" text-anchor="middle" fill="#CBD5E1">
+    <text x="90"  y="226">22</text>
+    <text x="124" y="226">23</text>
+    <text x="158" y="226">24</text>
+    <text x="192" y="226">25</text>
+    <text x="226" y="226">26</text>
+    <!-- Date 27: ? -->
+    <text x="260" y="229" font-size="16" font-weight="800" fill="#F59E0B" opacity="0.6">?</text>
+    <text x="294" y="226">28</text>
+  </g>
+
+  <!-- Abstract human — right side, confused -->
+  <circle cx="342" cy="175" r="20" fill="#2D9CDB"/>
+  <!-- Head tilted (offset circle for confused look) -->
+  <circle cx="347" cy="168" r="20" fill="#2D9CDB"/>
+  <!-- Body -->
+  <ellipse cx="342" cy="210" rx="15" ry="22" fill="#2D9CDB" opacity="0.8"/>
+  <!-- Arm reaching toward calendar -->
+  <line x1="330" y1="205" x2="308" y2="215" stroke="#2D9CDB" stroke-width="10" stroke-linecap="round"/>
+  <!-- Question mark above head -->
+  <text x="362" y="148" font-family="Poppins, sans-serif" font-size="22" font-weight="800" fill="#F59E0B">?</text>
+
+  <!-- Placeholder label -->
+  <rect x="0" y="370" width="400" height="30" rx="0" fill="rgba(45,156,219,0.08)"/>
+  <text x="200" y="390" text-anchor="middle"
+        font-family="Poppins, sans-serif" font-size="10" fill="#2D9CDB">
+    [PLACEHOLDER] problem/problem-forgot-schedule.svg
+  </text>
+</svg>

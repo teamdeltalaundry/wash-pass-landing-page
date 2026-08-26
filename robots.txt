@@ -1,0 +1,13 @@
+# WashClub — robots.txt
+# https://washclub.id
+
+User-agent: *
+Allow: /
+
+# Block internal paths
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+
+# Sitemap
+Sitemap: https://washclub.id/sitemap.xml

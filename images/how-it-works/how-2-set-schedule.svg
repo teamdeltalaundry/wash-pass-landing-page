@@ -1,0 +1,122 @@
+<!-- ============================================================
+     WASHCLUB — how-it-works/how-2-set-schedule.svg
+     STATUS:    PLACEHOLDER — ganti dengan ilustrasi final
+     SECTION:   How It Works — Step 2
+     RATIO:     1:1  480×480px
+     STYLE:     Flat · weekly calendar · tap/click interaction
+     AI PROMPT:
+       Minimal flat illustration of a weekly calendar grid viewed
+       slightly from above (subtle isometric tilt), with one day
+       highlighted in blue (#2D9CDB) showing a clock icon and checkmark
+       badge. A geometric abstract hand/cursor tapping that date. Small
+       ripple effect around the tap point. Colors: white calendar, blue
+       highlight, light gray grid, very light blue bg. Flat startup
+       illustration, Apple-inspired minimalism. Square. SVG style.
+     ============================================================ -->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 480 480" width="480" height="480"
+     role="img" aria-label="[PLACEHOLDER] Ilustrasi menentukan jadwal pickup WashClub">
+
+  <rect width="480" height="480" rx="24" fill="#EBF5FF"/>
+
+  <!-- Calendar card (slight tilt for depth) -->
+  <g transform="translate(50, 80) rotate(-2, 190, 180)">
+    <rect x="0" y="0" width="380" height="280" rx="20" fill="white" stroke="#E2E8F0" stroke-width="1.5"/>
+
+    <!-- Calendar header -->
+    <rect x="0" y="0" width="380" height="56" rx="20" fill="#2D9CDB"/>
+    <rect x="0" y="36" width="380" height="20" fill="#2D9CDB"/>
+    <text x="190" y="28" text-anchor="middle" font-family="Poppins, sans-serif" font-size="16" font-weight="700" fill="white">Juli 2026</text>
+    <!-- Nav arrows -->
+    <text x="28" y="30" font-family="Poppins, sans-serif" font-size="16" fill="rgba(255,255,255,0.7)">‹</text>
+    <text x="354" y="30" font-family="Poppins, sans-serif" font-size="16" fill="rgba(255,255,255,0.7)">›</text>
+
+    <!-- Day headers -->
+    <g font-family="Poppins, sans-serif" font-size="10" text-anchor="middle" fill="#94A3B8" font-weight="600">
+      <text x="32"  y="72">Sen</text>
+      <text x="86"  y="72">Sel</text>
+      <text x="140" y="72">Rab</text>
+      <text x="194" y="72">Kam</text>
+      <text x="248" y="72">Jum</text>
+      <text x="302" y="72">Sab</text>
+      <text x="356" y="72">Min</text>
+    </g>
+
+    <!-- Week row 1 -->
+    <g font-family="Poppins, sans-serif" font-size="12" text-anchor="middle" fill="#64748B">
+      <text x="32"  y="106">1</text>
+      <text x="86"  y="106">2</text>
+      <text x="140" y="106">3</text>
+      <!-- Thursday 4 — SELECTED/TAPPED -->
+      <rect x="168" y="86" width="52" height="52" rx="14" fill="#2D9CDB"/>
+      <circle cx="194" cy="90" r="6" fill="rgba(255,255,255,0.0)"/>
+      <!-- Ripple 1 -->
+      <circle cx="194" cy="112" r="26" fill="none" stroke="#2D9CDB" stroke-width="1.5" opacity="0.30"/>
+      <!-- Ripple 2 -->
+      <circle cx="194" cy="112" r="36" fill="none" stroke="#2D9CDB" stroke-width="1" opacity="0.15"/>
+      <text x="194" y="108" fill="white" font-weight="700">4</text>
+      <!-- Clock icon -->
+      <circle cx="194" cy="124" r="8" fill="rgba(255,255,255,0.2)"/>
+      <line x1="194" y1="120" x2="194" y2="124" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="194" y1="124" x2="197" y2="126" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+      <!-- Check badge (top right of selected day) -->
+      <circle cx="215" cy="90" r="11" fill="#22C55E"/>
+      <polyline points="209,90 213,94 221,84" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+      <text x="248" y="106">5</text>
+      <text x="302" y="106">6</text>
+      <text x="356" y="106">7</text>
+    </g>
+
+    <!-- Week row 2 -->
+    <g font-family="Poppins, sans-serif" font-size="12" text-anchor="middle" fill="#64748B">
+      <text x="32"  y="168">8</text>
+      <text x="86"  y="168">9</text>
+      <text x="140" y="168">10</text>
+      <!-- Highlight repeat day (Thursday again) -->
+      <rect x="168" y="148" width="52" height="40" rx="12" fill="rgba(45,156,219,0.10)" stroke="#2D9CDB" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="194" y="172" fill="#2D9CDB" font-weight="600">11</text>
+      <text x="248" y="168">12</text>
+      <text x="302" y="168">13</text>
+      <text x="356" y="168">14</text>
+    </g>
+
+    <!-- Week row 3 — light -->
+    <g font-family="Poppins, sans-serif" font-size="12" text-anchor="middle" fill="#CBD5E1">
+      <text x="32" y="228">15</text>
+      <text x="86" y="228">16</text>
+      <text x="140" y="228">17</text>
+      <!-- Thursday again highlighted lighter -->
+      <rect x="168" y="208" width="52" height="40" rx="12" fill="rgba(45,156,219,0.06)" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="194" y="232" fill="#94A3B8">18</text>
+      <text x="248" y="228">19</text>
+      <text x="302" y="228">20</text>
+      <text x="356" y="228">21</text>
+    </g>
+
+    <!-- Repeat indicator row -->
+    <rect x="14" y="246" width="352" height="26" rx="10" fill="rgba(45,156,219,0.06)"/>
+    <text x="190" y="262" text-anchor="middle" font-family="Poppins, sans-serif" font-size="10" font-weight="600" fill="#2D9CDB">↺ Setiap Kamis 10:00 — Otomatis</text>
+  </g>
+
+  <!-- Abstract cursor/hand (tapping the 4th day) -->
+  <g transform="translate(228, 246)">
+    <!-- Finger/cursor -->
+    <rect x="-6" y="-40" width="12" height="40" rx="6" fill="#1E293B" opacity="0.75"/>
+    <rect x="-10" y="0" width="20" height="28" rx="8" fill="#1E293B" opacity="0.75"/>
+    <!-- Tap ripple animation hint (static placeholder) -->
+    <circle cx="0" cy="-20" r="18" fill="none" stroke="#2D9CDB" stroke-width="1.5" opacity="0.35"/>
+  </g>
+
+  <!-- Label below -->
+  <text x="240" y="414" text-anchor="middle" font-family="Poppins, sans-serif" font-size="13" font-weight="600" fill="#2D9CDB">
+    Pilih hari sekali — berlaku setiap minggu!
+  </text>
+
+  <!-- Placeholder label -->
+  <rect x="0" y="450" width="480" height="30" rx="0" fill="rgba(45,156,219,0.08)"/>
+  <text x="240" y="470" text-anchor="middle"
+        font-family="Poppins, sans-serif" font-size="10" fill="#2D9CDB">
+    [PLACEHOLDER] how-it-works/how-2-set-schedule.svg
+  </text>
+</svg>

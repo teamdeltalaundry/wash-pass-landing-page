@@ -1,0 +1,92 @@
+<!-- ============================================================
+     WASHCLUB — how-it-works/how-1-choose-plan.svg
+     STATUS:    PLACEHOLDER — ganti dengan ilustrasi final
+     SECTION:   How It Works — Step 1
+     RATIO:     1:1  480×480px
+     STYLE:     Flat · abstract hand selecting subscription plan card
+     AI PROMPT:
+       Minimal flat illustration of an abstract hand (geometric, no
+       skin texture) selecting one of three floating subscription plan
+       cards. Selected card glows with blue border (#2D9CDB) and a
+       checkmark. Other two cards slightly faded gray. Cards show
+       simplified price tags (Rp shapes). Colors: #2D9CDB selection
+       highlight, white cards, light gray bg. Flat geometric startup
+       illustration. Square. SVG style.
+     ============================================================ -->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 480 480" width="480" height="480"
+     role="img" aria-label="[PLACEHOLDER] Ilustrasi memilih paket WashClub">
+
+  <rect width="480" height="480" rx="24" fill="#EBF5FF"/>
+
+  <!-- Three plan cards -->
+
+  <!-- Card 1 (Solo) — faded -->
+  <rect x="40"  y="130" width="110" height="180" rx="16" fill="white" stroke="#E2E8F0" stroke-width="1.5" opacity="0.7"/>
+  <text x="95"  y="165" text-anchor="middle" font-family="Poppins, sans-serif" font-size="11" font-weight="700" fill="#94A3B8">Solo</text>
+  <text x="95"  y="185" text-anchor="middle" font-family="Poppins, sans-serif" font-size="16" font-weight="800" fill="#CBD5E1">Rp99k</text>
+  <text x="95"  y="200" text-anchor="middle" font-family="Poppins, sans-serif" font-size="9" fill="#CBD5E1">/bulan</text>
+  <!-- Feature dots -->
+  <circle cx="64" cy="220" r="3" fill="#E2E8F0"/>
+  <rect x="72" y="218" width="60" height="5" rx="2.5" fill="#E2E8F0"/>
+  <circle cx="64" cy="236" r="3" fill="#E2E8F0"/>
+  <rect x="72" y="234" width="50" height="5" rx="2.5" fill="#E2E8F0"/>
+  <circle cx="64" cy="252" r="3" fill="#E2E8F0"/>
+  <rect x="72" y="250" width="55" height="5" rx="2.5" fill="#E2E8F0"/>
+
+  <!-- Card 2 (Couple) — SELECTED -->
+  <rect x="185" y="100" width="110" height="200" rx="16" fill="white" stroke="#2D9CDB" stroke-width="2.5"/>
+  <!-- Selection glow -->
+  <rect x="183" y="98" width="114" height="204" rx="17" fill="none" stroke="#56CCF2" stroke-width="1" opacity="0.5"/>
+  <!-- Popular badge -->
+  <rect x="203" y="88" width="74" height="20" rx="10" fill="#2D9CDB"/>
+  <text x="240" y="101" text-anchor="middle" font-family="Poppins, sans-serif" font-size="9" font-weight="700" fill="white">★ Populer</text>
+  <text x="240" y="135" text-anchor="middle" font-family="Poppins, sans-serif" font-size="11" font-weight="700" fill="#1E293B">Couple</text>
+  <text x="240" y="158" text-anchor="middle" font-family="Poppins, sans-serif" font-size="18" font-weight="800" fill="#2D9CDB">Rp179k</text>
+  <text x="240" y="173" text-anchor="middle" font-family="Poppins, sans-serif" font-size="9" fill="#64748B">/bulan</text>
+  <!-- Feature checkmarks -->
+  <g fill="#22C55E">
+    <polyline points="200,194 204,198 212,190" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <polyline points="200,210 204,214 212,206" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <polyline points="200,226 204,230 212,222" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+  <rect x="220" y="190" width="58" height="5" rx="2.5" fill="#E2E8F0"/>
+  <rect x="220" y="206" width="48" height="5" rx="2.5" fill="#E2E8F0"/>
+  <rect x="220" y="222" width="54" height="5" rx="2.5" fill="#E2E8F0"/>
+  <!-- Big check badge -->
+  <circle cx="275" cy="115" r="16" fill="#2D9CDB"/>
+  <polyline points="267,115 272,120 283,108" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- Card 3 (Family) — faded -->
+  <rect x="330" y="130" width="110" height="180" rx="16" fill="white" stroke="#E2E8F0" stroke-width="1.5" opacity="0.7"/>
+  <text x="385" y="165" text-anchor="middle" font-family="Poppins, sans-serif" font-size="11" font-weight="700" fill="#94A3B8">Family</text>
+  <text x="385" y="185" text-anchor="middle" font-family="Poppins, sans-serif" font-size="16" font-weight="800" fill="#CBD5E1">Rp329k</text>
+  <text x="385" y="200" text-anchor="middle" font-family="Poppins, sans-serif" font-size="9" fill="#CBD5E1">/bulan</text>
+  <circle cx="354" cy="220" r="3" fill="#E2E8F0"/>
+  <rect x="362" y="218" width="60" height="5" rx="2.5" fill="#E2E8F0"/>
+  <circle cx="354" cy="236" r="3" fill="#E2E8F0"/>
+  <rect x="362" y="234" width="50" height="5" rx="2.5" fill="#E2E8F0"/>
+  <circle cx="354" cy="252" r="3" fill="#E2E8F0"/>
+  <rect x="362" y="250" width="55" height="5" rx="2.5" fill="#E2E8F0"/>
+
+  <!-- Abstract hand (geometric) pointing at card 2 -->
+  <g transform="translate(185, 310)">
+    <!-- Palm -->
+    <rect x="0" y="20" width="48" height="50" rx="12" fill="#2D9CDB" opacity="0.85"/>
+    <!-- Fingers pointing up (index finger) -->
+    <rect x="10" y="-18" width="12" height="42" rx="6" fill="#2D9CDB"/>
+    <!-- Tap ripple effect -->
+    <circle cx="16" cy="-4" r="18" fill="none" stroke="#2D9CDB" stroke-width="1.5" opacity="0.25"/>
+    <circle cx="16" cy="-4" r="28" fill="none" stroke="#2D9CDB" stroke-width="1" opacity="0.12"/>
+    <!-- Other fingers folded -->
+    <rect x="24" y="6" width="10" height="26" rx="5" fill="#2D9CDB" opacity="0.75"/>
+    <rect x="36" y="10" width="9" height="22" rx="4.5" fill="#2D9CDB" opacity="0.65"/>
+  </g>
+
+  <!-- Placeholder label -->
+  <rect x="0" y="450" width="480" height="30" rx="0" fill="rgba(45,156,219,0.08)"/>
+  <text x="240" y="470" text-anchor="middle"
+        font-family="Poppins, sans-serif" font-size="10" fill="#2D9CDB">
+    [PLACEHOLDER] how-it-works/how-1-choose-plan.svg
+  </text>
+</svg>

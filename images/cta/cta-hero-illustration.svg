@@ -1,0 +1,101 @@
+<!-- ============================================================
+     WASHCLUB — cta/cta-hero-illustration.svg
+     STATUS:    PLACEHOLDER — ganti dengan ilustrasi final
+     SECTION:   CTA Final Section — background/visual
+     RATIO:     16:9 or 3:2  1200×800px
+     STYLE:     Abstract celebration · floating checkmarks · confetti
+     AI PROMPT:
+       Abstract flat illustration celebrating a completed action —
+       floating checkmark circles in various blue shades (#2D9CDB,
+       #56CCF2, white), small geometric confetti shapes (squares,
+       circles, triangles) in light blue and white, a large soft
+       gradient circle in the background as a glow effect. Optionally:
+       small abstract laundry bag icon with a sparkle. Background deep
+       navy (#1E293B) for dark CTA section contrast. Colors: all shades
+       of blue, white, very light gray. Style: abstract celebration,
+       minimal, startup. Wide format. SVG style.
+     ============================================================ -->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1200 800" width="1200" height="800"
+     role="img" aria-hidden="true">
+
+  <defs>
+    <radialGradient id="glow-cta" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#2D9CDB" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#2D9CDB" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow-right" cx="80%" cy="30%" r="40%">
+      <stop offset="0%"   stop-color="#56CCF2" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#56CCF2" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background: deep navy (matches CTA section) -->
+  <rect width="1200" height="800" fill="#1E293B"/>
+
+  <!-- Glow circles -->
+  <ellipse cx="600" cy="400" rx="480" ry="380" fill="url(#glow-cta)"/>
+  <ellipse cx="960" cy="240" rx="300" ry="260" fill="url(#glow-right)"/>
+
+  <!-- Large background checkmark circles -->
+  <circle cx="180" cy="160" r="80" fill="rgba(45,156,219,0.08)" stroke="#2D9CDB" stroke-width="1" opacity="0.3"/>
+  <circle cx="1040" cy="640" r="100" fill="rgba(86,204,242,0.06)" stroke="#56CCF2" stroke-width="1" opacity="0.25"/>
+  <circle cx="880" cy="180" r="60" fill="rgba(45,156,219,0.07)" stroke="#2D9CDB" stroke-width="1" opacity="0.25"/>
+
+  <!-- Floating checkmark circles (various sizes) -->
+  <!-- Large center check -->
+  <circle cx="600" cy="380" r="72" fill="#2D9CDB" opacity="0.9"/>
+  <polyline points="570,380 592,402 634,356" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- Medium checks scattered -->
+  <circle cx="300" cy="260" r="44" fill="#2D9CDB" opacity="0.6"/>
+  <polyline points="282,260 296,274 320,248" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <circle cx="900" cy="300" r="40" fill="#56CCF2" opacity="0.55"/>
+  <polyline points="883,300 896,313 920,288" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <circle cx="200" cy="520" r="32" fill="#2D9CDB" opacity="0.45"/>
+  <polyline points="186,520 197,531 216,509" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <circle cx="1000" cy="480" r="28" fill="#56CCF2" opacity="0.40"/>
+  <polyline points="987,480 997,490 1015,468" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- Small confetti shapes — squares -->
+  <rect x="130"  y="380" width="14" height="14" rx="3" fill="#56CCF2" opacity="0.45" transform="rotate(20, 137, 387)"/>
+  <rect x="480"  y="160" width="12" height="12" rx="3" fill="#2D9CDB" opacity="0.4" transform="rotate(-15, 486, 166)"/>
+  <rect x="780"  y="520" width="10" height="10" rx="2" fill="white" opacity="0.2" transform="rotate(30, 785, 525)"/>
+  <rect x="1050" y="350" width="14" height="14" rx="3" fill="#2D9CDB" opacity="0.35" transform="rotate(-25, 1057, 357)"/>
+  <rect x="350"  y="580" width="10" height="10" rx="2" fill="#56CCF2" opacity="0.35" transform="rotate(10, 355, 585)"/>
+  <rect x="700"  y="130" width="12" height="12" rx="3" fill="white" opacity="0.15" transform="rotate(40, 706, 136)"/>
+
+  <!-- Small confetti — circles -->
+  <circle cx="160" cy="450" r="7"  fill="#56CCF2" opacity="0.4"/>
+  <circle cx="440" cy="220" r="6"  fill="white"   opacity="0.2"/>
+  <circle cx="830" cy="150" r="8"  fill="#2D9CDB" opacity="0.35"/>
+  <circle cx="1080" cy="580" r="6" fill="#56CCF2" opacity="0.3"/>
+  <circle cx="320" cy="480" r="5"  fill="white"   opacity="0.18"/>
+  <circle cx="960" cy="580" r="7"  fill="#2D9CDB" opacity="0.3"/>
+
+  <!-- Triangles -->
+  <polygon points="520,480 508,500 532,500" fill="#56CCF2" opacity="0.3" transform="rotate(20, 520, 490)"/>
+  <polygon points="740,220 728,240 752,240" fill="white" opacity="0.15" transform="rotate(-15, 740, 230)"/>
+  <polygon points="1100,280 1088,300 1112,300" fill="#2D9CDB" opacity="0.3" transform="rotate(30, 1100, 290)"/>
+  <polygon points="100,300 88,320 112,320" fill="#56CCF2" opacity="0.25" transform="rotate(-10, 100, 310)"/>
+
+  <!-- Laundry bag icon (center, small accent) -->
+  <g transform="translate(550, 470)">
+    <rect x="0" y="0" width="100" height="80" rx="14" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+    <!-- Bag handles -->
+    <path d="M 20 0 Q 20 -12 28 -12 Q 36 -12 36 0" stroke="rgba(255,255,255,0.25)" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M 64 0 Q 64 -12 72 -12 Q 80 -12 80 0" stroke="rgba(255,255,255,0.25)" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <!-- Sparkle on bag -->
+    <text x="50" y="48" text-anchor="middle" font-family="Poppins, sans-serif" font-size="24" fill="rgba(255,255,255,0.6)">✨</text>
+  </g>
+
+  <!-- Placeholder label -->
+  <rect x="0" y="764" width="1200" height="36" fill="rgba(255,255,255,0.04)"/>
+  <text x="600" y="786" text-anchor="middle"
+        font-family="Poppins, sans-serif" font-size="11" fill="rgba(255,255,255,0.35)" font-weight="500">
+    [PLACEHOLDER] cta/cta-hero-illustration.svg — Ganti dengan ilustrasi final
+  </text>
+</svg>

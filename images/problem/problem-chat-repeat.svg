@@ -1,0 +1,80 @@
+<!-- ============================================================
+     WASHCLUB — problem/problem-chat-repeat.svg
+     STATUS:    PLACEHOLDER — ganti dengan ilustrasi final
+     SECTION:   Problem — Pain Point 2
+     RATIO:     1:1  400×400px
+     STYLE:     Flat · chat bubbles · smartphone · repetitive
+     AI PROMPT:
+       Minimal flat illustration showing a smartphone with repetitive
+       chat bubble messages stacked vertically, all saying variations
+       of "Laundry order please" with small clock icons showing
+       different weeks. A small frustrated abstract face at the side.
+       Colors: white phone, blue chat bubbles #2D9CDB, #EBF5FF bg.
+       Flat, geometric, startup illustration. Square. SVG style.
+     ============================================================ -->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 400 400" width="400" height="400"
+     role="img" aria-label="[PLACEHOLDER] Ilustrasi harus chat laundry ulang setiap minggu">
+
+  <!-- Background -->
+  <rect width="400" height="400" rx="24" fill="#EBF5FF"/>
+
+  <!-- Phone frame -->
+  <rect x="130" y="44" width="140" height="280" rx="22" fill="#1E293B"/>
+  <rect x="138" y="52" width="124" height="264" rx="16" fill="white"/>
+  <!-- Notch -->
+  <rect x="172" y="56" width="56" height="8" rx="4" fill="#0F172A" opacity="0.5"/>
+
+  <!-- Chat header -->
+  <rect x="138" y="64" width="124" height="36" fill="#F8FBFF"/>
+  <circle cx="155" cy="82" r="10" fill="#CBD5E1"/>
+  <text x="170" y="78" font-family="Poppins, sans-serif" font-size="8.5" font-weight="700" fill="#1E293B">Laundry Pak RT</text>
+  <circle cx="250" cy="78" r="4" fill="#22C55E"/>
+  <text x="248" y="90" text-anchor="middle" font-family="Poppins, sans-serif" font-size="7" fill="#64748B">Online</text>
+
+  <!-- Chat bubbles — repeated messages -->
+  <!-- Week 1 -->
+  <rect x="144" y="108" width="90" height="26" rx="10" fill="#2D9CDB"/>
+  <text x="150" y="121" font-family="Poppins, sans-serif" font-size="8" fill="white" font-weight="500">Order laundry dong</text>
+  <text x="144" y="140" font-family="Poppins, sans-serif" font-size="7" fill="#94A3B8">Minggu 1 · 08:12</text>
+
+  <!-- Week 2 -->
+  <rect x="144" y="148" width="96" height="26" rx="10" fill="#56CCF2" opacity="0.85"/>
+  <text x="150" y="161" font-family="Poppins, sans-serif" font-size="8" fill="white" font-weight="500">Mau order laundry lagi</text>
+  <text x="144" y="180" font-family="Poppins, sans-serif" font-size="7" fill="#94A3B8">Minggu 2 · 09:05</text>
+
+  <!-- Week 3 -->
+  <rect x="144" y="188" width="100" height="26" rx="10" fill="#2D9CDB"/>
+  <text x="150" y="201" font-family="Poppins, sans-serif" font-size="8" fill="white" font-weight="500">Order laundry minggu ini</text>
+  <text x="144" y="220" font-family="Poppins, sans-serif" font-size="7" fill="#94A3B8">Minggu 3 · 07:48</text>
+
+  <!-- Reply from laundry -->
+  <rect x="182" y="226" width="72" height="22" rx="8" fill="#F1F5F9"/>
+  <text x="188" y="240" font-family="Poppins, sans-serif" font-size="8" fill="#64748B">Siap! Tunggu ya 👍</text>
+
+  <!-- Week 4 -->
+  <rect x="144" y="254" width="96" height="26" rx="10" fill="#2D9CDB" opacity="0.5"/>
+  <text x="150" y="267" font-family="Poppins, sans-serif" font-size="8" fill="white" font-weight="500">Order laundry lagi ya</text>
+  <text x="144" y="282" font-family="Poppins, sans-serif" font-size="7" fill="#CBD5E1">Minggu 4 · ...</text>
+
+  <!-- Frustrated face (abstract) — left side -->
+  <circle cx="75" cy="200" r="34" fill="#2D9CDB" opacity="0.15"/>
+  <circle cx="75" cy="185" r="18" fill="#2D9CDB"/>
+  <!-- Abstract frustrated expression — just a slight curve down -->
+  <path d="M 66 192 Q 75 188 84 192" stroke="#1E293B" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.4"/>
+  <!-- Body -->
+  <ellipse cx="75" cy="215" rx="14" ry="18" fill="#2D9CDB" opacity="0.8"/>
+
+  <!-- Repeated swirl arrow indicating loop -->
+  <path d="M 308 180 Q 340 150 340 200 Q 340 250 308 220" stroke="#EF4444" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-dasharray="6,4" opacity="0.6"/>
+  <text x="330" y="205" font-family="Poppins, sans-serif" font-size="10" fill="#EF4444" font-weight="600" opacity="0.7">↺</text>
+  <text x="322" y="160" font-family="Poppins, sans-serif" font-size="9" fill="#EF4444" opacity="0.6">setiap</text>
+  <text x="322" y="172" font-family="Poppins, sans-serif" font-size="9" fill="#EF4444" opacity="0.6">minggu!</text>
+
+  <!-- Placeholder label -->
+  <rect x="0" y="370" width="400" height="30" rx="0" fill="rgba(45,156,219,0.08)"/>
+  <text x="200" y="390" text-anchor="middle"
+        font-family="Poppins, sans-serif" font-size="10" fill="#2D9CDB">
+    [PLACEHOLDER] problem/problem-chat-repeat.svg
+  </text>
+</svg>
