@@ -1745,5 +1745,67 @@
       .wl-overlay { align-items: flex-end; padding: 0; }
     }
   </style>
+  <script>
+  // ==========================================
+  // 2. LOGIKA GOOGLE SHEETS & POP-UP THANK YOU
+  // ==========================================
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbxBcxD_rLk7jodO3V1jVIBGXujaKKCdMsTtsMvWAzdToj1BRXFBtfrnXGJ0NWLQRnZX/exec';
+  const wlForm = document.getElementById('waitlist-form');
+  const wlModal = document.getElementById('waitlist-modal');
+  const tyPopup = document.getElementById('thankyou-popup');
+  const tyCloseBtn = document.getElementById('ty-close');
+
+  if (wlForm) {
+    wlForm.addEventListener('submit', e => {
+      e.preventDefault();
+      
+      const formData = new FormData();
+      formData.append('nama', document.getElementById('wl-nama').value);
+      formData.append('whatsapp', document.getElementById('wl-whatsapp').value);
+      formData.append('instagram', document.getElementById('wl-instagram').value);
+
+      const submitBtn = document.getElementById('wl-submit');
+      const submitText = submitBtn.querySelector('.wl-submit-text');
+      const submitLoading = submitBtn.querySelector('.wl-submit-loading');
+      
+      if (submitText) submitText.style.display = 'none';
+      if (submitLoading) submitLoading.removeAttribute('hidden');
+      submitBtn.disabled = true;
+
+      fetch(scriptURL, { method: 'POST', body: formData })
+        .then(response => {
+          if (submitText) submitText.style.display = 'inline';
+          if (submitLoading) submitLoading.setAttribute('hidden', '');
+          submitBtn.disabled = false;
+          
+          // Tutup form waitlist, buka thank you popup
+          if (wlModal) {
+            wlModal.setAttribute('hidden', '');
+            wlModal.style.display = 'none';
+          }
+          if (tyPopup) {
+            tyPopup.removeAttribute('hidden');
+            tyPopup.style.display = 'flex';
+          }
+          
+          wlForm.reset();
+        })
+        .catch(error => {
+          console.error('Error!', error.message);
+          if (submitText) submitText.style.display = 'inline';
+          if (submitLoading) submitLoading.setAttribute('hidden', '');
+          submitBtn.disabled = false;
+          alert('Waduh, ada kendala koneksi. Coba lagi ya!');
+        });
+    });
+  }
+
+  if (tyCloseBtn && tyPopup) {
+    tyCloseBtn.addEventListener('click', () => {
+      tyPopup.setAttribute('hidden', '');
+      tyPopup.style.display = 'none';
+    });
+  }
+</script>
 </body>
 </html>
