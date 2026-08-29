@@ -216,20 +216,19 @@
                 <span id="hero-nama-error" class="wl-inline-error" role="alert" aria-live="polite"></span>
               </div>
               <div class="wl-inline-field">
-                <label for="hero-wa" class="wl-inline-label">Nomor WhatsApp <span aria-hidden="true">*</span></label>
+                <label for="hero-ig" class="wl-inline-label">Username Instagram <span aria-hidden="true">*</span></label>
                 <input
-                  type="tel"
-                  id="hero-wa"
-                  name="whatsapp"
+                  type="text"
+                  id="hero-ig"
+                  name="instagram"
                   class="wl-inline-input"
-                  placeholder="Contoh: 08123456789"
-                  autocomplete="tel"
-                  inputmode="numeric"
+                  placeholder="Contoh: @budisantoso"
+                  autocomplete="username"
                   required
                   aria-required="true"
-                  aria-describedby="hero-wa-error"
+                  aria-describedby="hero-ig-error"
                 >
-                <span id="hero-wa-error" class="wl-inline-error" role="alert" aria-live="polite"></span>
+                <span id="hero-ig-error" class="wl-inline-error" role="alert" aria-live="polite"></span>
               </div>
             </div>
             <button type="submit" class="btn btn-primary btn-lg wl-inline-submit" id="hero-submit">
@@ -1540,11 +1539,11 @@
     <div class="wl-dialog wl-dialog-ty">
       <div class="wl-ty-icon" aria-hidden="true">🎉</div>
       <h2 id="ty-title" class="wl-ty-title">Kamu sudah masuk waitlist!</h2>
-      <p class="wl-ty-sub">Terima kasih sudah mendaftar. Kami akan menghubungi kamu via WhatsApp begitu WashClub siap hadir di areamu.</p>
+      <p class="wl-ty-sub">Terima kasih sudah mendaftar. Kami akan menghubungi kamu via Instagram begitu WashClub siap hadir di areamu.</p>
       <ul class="wl-ty-perks" role="list">
         <li><i data-lucide="circle-check" class="icon-sm" aria-hidden="true"></i> Diskon eksklusif member pertama</li>
         <li><i data-lucide="circle-check" class="icon-sm" aria-hidden="true"></i> Prioritas jadwal pickup</li>
-        <li><i data-lucide="circle-check" class="icon-sm" aria-hidden="true"></i> Notifikasi launching via WhatsApp</li>
+        <li><i data-lucide="circle-check" class="icon-sm" aria-hidden="true"></i> Notifikasi launching via Instagram</li>
       </ul>
       <button class="btn btn-primary btn-lg wl-ty-close" id="ty-close">Oke, Siap!</button>
     </div>
@@ -1745,67 +1744,5 @@
       .wl-overlay { align-items: flex-end; padding: 0; }
     }
   </style>
-  <script>
-  // ==========================================
-  // 2. LOGIKA GOOGLE SHEETS & POP-UP THANK YOU
-  // ==========================================
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbxBcxD_rLk7jodO3V1jVIBGXujaKKCdMsTtsMvWAzdToj1BRXFBtfrnXGJ0NWLQRnZX/exec';
-  const wlForm = document.getElementById('waitlist-form');
-  const wlModal = document.getElementById('waitlist-modal');
-  const tyPopup = document.getElementById('thankyou-popup');
-  const tyCloseBtn = document.getElementById('ty-close');
-
-  if (wlForm) {
-    wlForm.addEventListener('submit', e => {
-      e.preventDefault();
-      
-      const formData = new FormData();
-      formData.append('nama', document.getElementById('wl-nama').value);
-      formData.append('whatsapp', document.getElementById('wl-whatsapp').value);
-      formData.append('instagram', document.getElementById('wl-instagram').value);
-
-      const submitBtn = document.getElementById('wl-submit');
-      const submitText = submitBtn.querySelector('.wl-submit-text');
-      const submitLoading = submitBtn.querySelector('.wl-submit-loading');
-      
-      if (submitText) submitText.style.display = 'none';
-      if (submitLoading) submitLoading.removeAttribute('hidden');
-      submitBtn.disabled = true;
-
-      fetch(scriptURL, { method: 'POST', body: formData })
-        .then(response => {
-          if (submitText) submitText.style.display = 'inline';
-          if (submitLoading) submitLoading.setAttribute('hidden', '');
-          submitBtn.disabled = false;
-          
-          // Tutup form waitlist, buka thank you popup
-          if (wlModal) {
-            wlModal.setAttribute('hidden', '');
-            wlModal.style.display = 'none';
-          }
-          if (tyPopup) {
-            tyPopup.removeAttribute('hidden');
-            tyPopup.style.display = 'flex';
-          }
-          
-          wlForm.reset();
-        })
-        .catch(error => {
-          console.error('Error!', error.message);
-          if (submitText) submitText.style.display = 'inline';
-          if (submitLoading) submitLoading.setAttribute('hidden', '');
-          submitBtn.disabled = false;
-          alert('Waduh, ada kendala koneksi. Coba lagi ya!');
-        });
-    });
-  }
-
-  if (tyCloseBtn && tyPopup) {
-    tyCloseBtn.addEventListener('click', () => {
-      tyPopup.setAttribute('hidden', '');
-      tyPopup.style.display = 'none';
-    });
-  }
-</script>
 </body>
 </html>

@@ -853,16 +853,16 @@ function initClubby() {
    HERO WAITLIST FORM — Submit inline form ke Google Sheets
    ═══════════════════════════════════════════════════════ */
 function initHeroWaitlistForm() {
-  const GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycby6SxsvqONDCvj9cs3w6YO5eh-cj-CGX4KkHNEHePQFAmvAvPVVXMe9TlSboYjg2k3m/exec';
+  const GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxBe8CExlsQ1ukmz7xf3wZBPVVDn9zm-CXWYmpEa00gEUV18CDa8_9FI1i0no_tSrk/exec';
 
   const form       = document.getElementById('waitlist-form-hero');
   const submitBtn  = document.getElementById('hero-submit');
   const submitText = submitBtn && submitBtn.querySelector('.wl-submit-text');
   const submitLoad = submitBtn && submitBtn.querySelector('.wl-submit-loading');
   const namaInput  = document.getElementById('hero-nama');
-  const waInput    = document.getElementById('hero-wa');
+  const igInput    = document.getElementById('hero-ig');
   const namaError  = document.getElementById('hero-nama-error');
-  const waError    = document.getElementById('hero-wa-error');
+  const igError    = document.getElementById('hero-ig-error');
   const tyPopup    = document.getElementById('thankyou-popup');
   const btnTyClose = document.getElementById('ty-close');
 
@@ -915,11 +915,12 @@ function initHeroWaitlistForm() {
   function validate() {
     let valid = true;
     clearError(namaError);
-    clearError(waError);
+    clearError(igError);
 
     const nama = namaInput.value.trim();
-    const wa   = waInput.value.trim();
-    const waClean = wa.replace(/[\s\-().+]/g, '');
+    const ig   = igInput.value.trim();
+    // Normalise: pastikan dimulai dengan @
+    const igClean = ig.startsWith('@') ? ig : (ig ? '@' + ig : '');
 
     if (!nama) {
       setError(namaError, 'Nama lengkap wajib diisi.');
@@ -929,20 +930,20 @@ function initHeroWaitlistForm() {
       valid = false;
     }
 
-    if (!wa) {
-      setError(waError, 'Nomor WhatsApp wajib diisi.');
+    if (!ig) {
+      setError(igError, 'Username Instagram wajib diisi.');
       valid = false;
-    } else if (!/^\d{8,15}$/.test(waClean)) {
-      setError(waError, 'Masukkan nomor yang valid, contoh: 08123456789.');
+    } else if (!/^@?[\w.]{1,30}$/.test(ig)) {
+      setError(igError, 'Masukkan username Instagram yang valid, contoh: @budisantoso.');
       valid = false;
     }
 
-    return { valid, nama, whatsapp: waClean };
+    return { valid, nama, instagram: igClean };
   }
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const { valid, nama, whatsapp } = validate();
+    const { valid, nama, instagram } = validate();
     if (!valid) {
       const firstInvalid = form.querySelector('[aria-invalid="true"]');
       if (firstInvalid) firstInvalid.focus();
@@ -956,13 +957,13 @@ function initHeroWaitlistForm() {
         method:  'POST',
         mode:    'no-cors',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body:    new URLSearchParams({ nama, whatsapp }).toString(),
+        body:    new URLSearchParams({ nama, instagram }).toString(),
       });
 
       // Success — ganti tombol jadi konfirmasi
       form.reset();
       clearError(namaError);
-      clearError(waError);
+      clearError(igError);
       if (submitLoad) {
         submitLoad.hidden = true;
         submitLoad.style.display = 'none';
@@ -988,12 +989,11 @@ function initHeroWaitlistForm() {
     else clearError(namaError);
   });
 
-  waInput.addEventListener('blur', () => {
-    const val = waInput.value.trim();
-    const clean = val.replace(/[\s\-().+]/g, '');
-    if (!val) setError(waError, 'Nomor WhatsApp wajib diisi.');
-    else if (!/^\d{8,15}$/.test(clean)) setError(waError, 'Masukkan nomor yang valid, contoh: 08123456789.');
-    else clearError(waError);
+  igInput.addEventListener('blur', () => {
+    const val = igInput.value.trim();
+    if (!val) setError(igError, 'Username Instagram wajib diisi.');
+    else if (!/^@?[\w.]{1,30}$/.test(val)) setError(igError, 'Masukkan username Instagram yang valid, contoh: @budisantoso.');
+    else clearError(igError);
   });
 }
 
