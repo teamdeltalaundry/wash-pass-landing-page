@@ -872,6 +872,14 @@ function initHeroWaitlistForm() {
   function openThankyou() {
     if (!tyPopup) return;
     tyPopup.hidden = false;
+
+    // GA4 Lead Event — dikirim saat thank you popup muncul
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'generate_lead',
+      form_id: 'waitlist-form-hero',
+      form_name: 'Waitlist WashClub'
+    });
     document.body.style.overflow = 'hidden';
     if (typeof lucide !== 'undefined') lucide.createIcons();
     requestAnimationFrame(() => {
