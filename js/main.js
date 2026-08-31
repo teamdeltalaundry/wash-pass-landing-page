@@ -459,7 +459,7 @@ function initClubby() {
     faq: [
       `❓ <strong>Pertanyaan yang sering ditanya:</strong>`,
       `<strong>Apakah WashClub sudah beroperasi?</strong><br>Belum. WashClub sedang dalam tahap persiapan dan membuka waitlist sebelum resmi diluncurkan.`,
-      `<strong>Kapan WashClub diluncurkan?</strong><br>Tanggal launching akan diumumkan kepada seluruh member waitlist melalui WhatsApp.`,
+      `<strong>Kapan WashClub diluncurkan?</strong><br>Tanggal launching akan segera diumumkan kepada seluruh member waitlist.`,
       `<strong>Harus ada di rumah saat pickup?</strong><br>Tidak harus. Bisa titip ke satpam, resepsionis, atau taruh di depan pintu.`,
       `<strong>Berapa lama laundry selesai?</strong><br>Solo Pocket &amp; Couple Pack: <em>3 hari kerja</em>.<br>Family Pack: prioritas <em>48 jam</em>.<br>Ada Express Pass untuk lebih cepat (+Rp5.000/kg).`,
       `<strong>Bisa batal kapan saja?</strong><br>Ya, tanpa biaya penalti. Berlaku di akhir periode berjalan.`,
@@ -467,8 +467,8 @@ function initClubby() {
     ],
     'waiting-list': [
       `🎉 <strong>Gabung Waitlist WashClub — Gratis!</strong>`,
-      `WashClub belum resmi beroperasi, tapi kamu bisa daftar lebih awal sekarang.<br><br>Keuntungan daftar waitlist:<br>✅ Diskon eksklusif member pertama<br>✅ Prioritas jadwal pickup di areamu<br>✅ Notifikasi launching langsung ke WhatsApp`,
-      `Hanya butuh nama, nomor WhatsApp, dan Instagram (opsional). Gratis, tanpa komitmen! 👇`,
+      `WashClub belum resmi beroperasi, tapi kamu bisa daftar lebih awal sekarang.<br><br>Keuntungan daftar waitlist:<br>✅ Diskon eksklusif member pertama<br>✅ Prioritas jadwal pickup di areamu`,
+      `Hanya butuh nama dan username Instagram. Gratis, tanpa komitmen! 👇`,
     ],
   };
 
