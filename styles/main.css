@@ -1491,13 +1491,23 @@
     right:  0;
     left:   0;
     width:  100%;
-    max-height: 75dvh;
+    max-height: 85dvh;
+    height: 85dvh;
     border-radius: var(--radius-xl) var(--radius-xl) 0 0;
     transform-origin: bottom center;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    display: flex;
+    flex-direction: column;
   }
   .clubby-panel.is-open { transform: translateY(0) scale(1); }
   /* closed state override untuk mobile */
   .clubby-panel:not(.is-open) { transform: translateY(20px) scale(1); }
+  /* Messages area bisa scroll penuh */
+  .clubby-panel .clubby-messages {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+  }
 }
 
 /* ── Reduced motion ──────────────────────────────────── */
