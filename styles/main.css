@@ -1475,6 +1475,13 @@
   .clubby-wrap {
     bottom: 1.25rem;
     right:  1.25rem;
+    transition: right 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                left  0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  /* Pindah ke kiri bawah saat panel terbuka */
+  .clubby-wrap.clubby-panel-open-mobile {
+    right: auto;
+    left:  1.25rem;
   }
   .clubby-btn {
     width: 62px;

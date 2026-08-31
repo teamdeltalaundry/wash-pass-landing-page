@@ -492,15 +492,22 @@ function initClubby() {
   }
 
   /* ── Panel open / close ──────────────────────────── */
+  function isMobile() {
+    return window.innerWidth <= 479;
+  }
+
   function openPanel() {
     isPanelOpen = true;
     hideBubble();
     clearTimeout(dismissTimer);
+    // Mobile: pindah ke kiri bawah saat panel terbuka
+    if (isMobile()) {
+      wrap.classList.add('clubby-panel-open-mobile');
+    }
     panel.classList.add('is-open');
     panel.setAttribute('aria-hidden', 'false');
     btn.setAttribute('aria-expanded', 'true');
     btn.setAttribute('aria-label', 'Tutup chat Clubby');
-    // fokus ke tombol close di header
     requestAnimationFrame(() => panelClose.focus());
   }
 
@@ -510,6 +517,10 @@ function initClubby() {
     panel.setAttribute('aria-hidden', 'true');
     btn.setAttribute('aria-expanded', 'false');
     btn.setAttribute('aria-label', 'Buka chat Clubby, asisten WashClub');
+    // Mobile: kembali ke kanan bawah saat panel ditutup
+    if (isMobile()) {
+      wrap.classList.remove('clubby-panel-open-mobile');
+    }
     btn.focus();
   }
 
