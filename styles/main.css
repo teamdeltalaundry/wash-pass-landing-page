@@ -337,7 +337,37 @@
   line-height: 1.2;
 }
 @media (max-width: 767px) {
-  .hero-promo-overlay { display: none; }
+  .hero-promo-overlay {
+    display: block;
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    max-width: 100%;
+    margin-top: 1.5rem;
+    text-align: left;
+  }
+  .hero-promo-diskon {
+    font-size: clamp(2rem, 10vw, 3.5rem);
+  }
+  .hero-promo-persen {
+    font-size: clamp(3rem, 16vw, 6rem);
+  }
+  .hero-promo-sub {
+    font-size: clamp(1rem, 5vw, 1.5rem);
+  }
+  .hero-promo-label {
+    font-size: 0.85rem;
+  }
+  /* Slide container di mobile — relative positioning */
+  .hero-promo-slide {
+    position: relative;
+    top: auto;
+    left: auto;
+  }
+  .hero-promo-slide:not(.is-active) {
+    display: none;
+  }
 }
 .hero-phone-wrapper { position: relative; }
 

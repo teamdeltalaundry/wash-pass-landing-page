@@ -308,6 +308,11 @@ function initClubbyDrag(wrap, btn, isPanelOpenFn) {
   /** Muat posisi dari localStorage saat init */
   function loadPos() {
     try {
+      // Di mobile, selalu reset posisi ke default (kanan bawah)
+      if (window.innerWidth <= 479) {
+        localStorage.removeItem(STORAGE_KEY);
+        return;
+      }
       const raw = localStorage.getItem(STORAGE_KEY);
       if (!raw) return;
       const { left, top } = JSON.parse(raw);
