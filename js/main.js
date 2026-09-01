@@ -1018,6 +1018,8 @@ function initHeroWaitlistForm() {
         submitText.hidden = false;
       }
       submitBtn.disabled = true;
+      // Stop flicker animation setelah submit berhasil
+      submitBtn.style.animation = 'none';
       openThankyou();
 
     } catch (err) {
