@@ -1243,14 +1243,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // C — Buzz sound saat flicker animasi iterasi (mobile only)
-  const flickerBtn = document.getElementById('hero-submit');
-  if (flickerBtn && 'ontouchstart' in window) {
-    flickerBtn.addEventListener('animationiteration', () => {
-      SFX.playBuzz();
-    });
-  }
-
   // re-run spin after lucide renders icons
   requestAnimationFrame(() => {
     setTimeout(initSpinIcons, 50);
