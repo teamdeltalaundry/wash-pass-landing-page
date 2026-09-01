@@ -1169,12 +1169,16 @@ document.addEventListener('DOMContentLoaded', () => {
       return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-    // Update viewers setiap 30 detik
+    // Update viewers dengan interval bergilir: 7s → 3s → 10s → 15s → 30s → ulang
+    const viewerIntervals = [7000, 3000, 10000, 15000, 30000];
+    let viewerIntervalIdx = 0;
+
     function updateViewers() {
       const delta = randomDelta(-2, 3);
       viewers = Math.max(8, Math.min(25, viewers + delta));
       liveViewers.textContent = viewers;
-      setTimeout(updateViewers, 30000);
+      viewerIntervalIdx = (viewerIntervalIdx + 1) % viewerIntervals.length;
+      setTimeout(updateViewers, viewerIntervals[viewerIntervalIdx]);
     }
 
     // Update registered setiap 3 menit
@@ -1187,7 +1191,7 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(updateRegistered, 180000);
     }
 
-    setTimeout(updateViewers,    30000);
+    setTimeout(updateViewers,    viewerIntervals[0]);
     setTimeout(updateRegistered, 180000);
 
     // +1 saat pengunjung submit form (maks 59)
