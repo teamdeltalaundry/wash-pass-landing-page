@@ -264,7 +264,7 @@ function setNavbarHeightVar() {
    - Simpan posisi ke localStorage
    - Threshold 6px: bedakan klik vs drag
    ═══════════════════════════════════════════════════════ */
-function initClubbyDrag(wrap, btn) {
+function initClubbyDrag(wrap, btn, isPanelOpenFn) {
   if (!wrap || !btn) return;
 
   const STORAGE_KEY  = 'clubby-pos';
@@ -369,7 +369,8 @@ function initClubbyDrag(wrap, btn) {
   /* ── Mouse events ───────────────────────────────────── */
 
   btn.addEventListener('mousedown', e => {
-    if (e.button !== 0) return; // hanya klik kiri
+    if (e.button !== 0) return;
+    if (isPanelOpenFn && isPanelOpenFn()) return; // jangan drag saat panel terbuka
     e.preventDefault();
     onDragStart(e.clientX, e.clientY);
 
@@ -387,6 +388,7 @@ function initClubbyDrag(wrap, btn) {
   /* ── Touch events ───────────────────────────────────── */
 
   btn.addEventListener('touchstart', e => {
+    if (isPanelOpenFn && isPanelOpenFn()) return; // jangan drag saat panel terbuka
     const t = e.touches[0];
     onDragStart(t.clientX, t.clientY);
   }, { passive: true });
@@ -508,7 +510,9 @@ function initClubby() {
     panel.setAttribute('aria-hidden', 'false');
     btn.setAttribute('aria-expanded', 'true');
     btn.setAttribute('aria-label', 'Tutup chat Clubby');
-    requestAnimationFrame(() => panelClose.focus());
+    // Tunda focus sampai setelah CSS transition selesai (~280ms)
+    // requestAnimationFrame saja tidak cukup di iOS Safari
+    setTimeout(() => panelClose.focus(), 300);
   }
 
   function closePanel() {
@@ -520,9 +524,23 @@ function initClubby() {
     // Mobile: kembali ke kanan bawah saat panel ditutup
     if (isMobile()) {
       wrap.classList.remove('clubby-panel-open-mobile');
+      // Reset inline drag styles jika tidak ada saved position
+      // supaya CSS rule right: 1.25rem bisa aktif kembali
+      const savedPos = localStorage.getItem('clubby-pos');
+      if (!savedPos) {
+        wrap.style.left   = '';
+        wrap.style.top    = '';
+        wrap.style.right  = '';
+        wrap.style.bottom = '';
+      }
     }
     btn.focus();
   }
+
+  // Tutup panel saat thank-you popup muncul
+  document.addEventListener('clubby:close', () => {
+    if (isPanelOpen) closePanel();
+  });
 
   /* ── Chat helpers ────────────────────────────────── */
   function scrollToBottom() {
@@ -857,7 +875,7 @@ function initClubby() {
   });
 
   /* ── Init drag (after entry so loadPos doesn't fight animation) ── */
-  initClubbyDrag(wrap, btn);
+  initClubbyDrag(wrap, btn, () => isPanelOpen);
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -883,6 +901,9 @@ function initHeroWaitlistForm() {
   function openThankyou() {
     if (!tyPopup) return;
     tyPopup.hidden = false;
+
+    // Tutup panel Clubby jika sedang terbuka
+    document.dispatchEvent(new CustomEvent('clubby:close'));
 
     // GA4 Lead Event — dikirim saat thank you popup muncul
     window.dataLayer = window.dataLayer || [];
@@ -1028,6 +1049,122 @@ document.addEventListener('DOMContentLoaded', () => {
   setNavbarHeightVar();
   initHeroWaitlistForm();
   initClubby();
+
+  // Promo overlay slide rotation
+  const promoSlides = document.querySelectorAll('.hero-promo-slide');
+  const promoOverlay = document.querySelector('.hero-promo-overlay');
+  const promoArrow = document.getElementById('promo-arrow');
+  if (promoSlides.length > 1) {
+    const durations = [4500, 3500];
+    let current = 0;
+
+    function nextPromoSlide() {
+      promoSlides[current].classList.remove('is-active');
+      // D — hapus glow
+      if (promoOverlay) promoOverlay.classList.remove('is-glowing');
+      // C — sembunyikan arrow
+      if (promoArrow) promoArrow.classList.remove('is-visible');
+
+      current = (current + 1) % promoSlides.length;
+      promoSlides[current].classList.add('is-active');
+
+      // D — tambah glow di slide 1
+      if (current === 0 && promoOverlay) {
+        promoOverlay.classList.add('is-glowing');
+      }
+      // C — tampilkan arrow di slide 2 setelah 1.5s
+      if (current === 1 && promoArrow) {
+        setTimeout(() => promoArrow.classList.add('is-visible'), 1500);
+      }
+
+      setTimeout(nextPromoSlide, durations[current]);
+    }
+
+    // Init slide 1 dengan glow
+    if (promoOverlay) promoOverlay.classList.add('is-glowing');
+    setTimeout(nextPromoSlide, durations[0]);
+  }
+
+  // Bubble naik effect pada tombol wl-inline-submit
+  const submitBtn = document.getElementById('hero-submit');
+  if (submitBtn) {
+    let bubbleInterval = null;
+
+    function spawnBubble() {
+      const bubble = document.createElement('span');
+      bubble.classList.add('bubble-fullscreen');
+
+      const rect   = submitBtn.getBoundingClientRect();
+      const size   = Math.random() * 28 + 10;
+      const startX = rect.left + Math.random() * rect.width;
+      const startY = rect.top  + Math.random() * rect.height * 0.5;
+      const dur    = Math.random() * 0.8 + 1.0;
+      const drift  = (Math.random() - 0.5) * 80;
+
+      bubble.style.cssText = `
+        width:${size}px;
+        height:${size}px;
+        left:${startX}px;
+        top:${startY}px;
+        --dur:${dur}s;
+        --drift:${drift}px;
+      `;
+
+      document.body.appendChild(bubble);
+      bubble.addEventListener('animationend', () => bubble.remove());
+    }
+
+    // Desktop — hover
+    submitBtn.addEventListener('mouseenter', () => {
+      for (let i = 0; i < 5; i++) spawnBubble();
+      bubbleInterval = setInterval(() => {
+        spawnBubble(); spawnBubble(); spawnBubble();
+      }, 100);
+    });
+    submitBtn.addEventListener('mouseleave', () => {
+      clearInterval(bubbleInterval);
+      bubbleInterval = null;
+    });
+
+    // Mobile — otomatis setelah 4 detik idle, muncul 2 detik
+    if ('ontouchstart' in window) {
+      let idleTimer = null;
+
+      function startBurst() {
+        let count = 0;
+        bubbleInterval = setInterval(() => {
+          spawnBubble(); spawnBubble(); spawnBubble();
+          count++;
+          if (count >= 20) { // 20 × 100ms = 2 detik
+            clearInterval(bubbleInterval);
+            bubbleInterval = null;
+            scheduleIdle();
+          }
+        }, 100);
+      }
+
+      function scheduleIdle() {
+        clearTimeout(idleTimer);
+        idleTimer = setTimeout(startBurst, 4000);
+      }
+
+      // Reset timer setiap user sentuh layar
+      document.addEventListener('touchstart', () => {
+        clearInterval(bubbleInterval);
+        bubbleInterval = null;
+        scheduleIdle();
+      }, { passive: true });
+
+      // Stop permanen saat tombol diklik
+      submitBtn.addEventListener('click', () => {
+        clearTimeout(idleTimer);
+        clearInterval(bubbleInterval);
+        bubbleInterval = null;
+      });
+
+      scheduleIdle();
+    }
+  }
 
   // re-run spin after lucide renders icons
   requestAnimationFrame(() => {
