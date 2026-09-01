@@ -258,10 +258,10 @@
 
 /* B — 30% berubah warna ke biru aqua */
 @keyframes promo-color-shift {
-  0%,  30% { color: #0F172A; text-shadow: none; }
-  55%       { color: #00CFFF; text-shadow: 0 0 30px rgba(0,207,255,0.7), 0 0 60px rgba(0,207,255,0.4); }
-  85%       { color: #00CFFF; text-shadow: 0 0 30px rgba(0,207,255,0.7); }
-  100%      { color: #0F172A; text-shadow: none; }
+  0%,  30% { color: #0F172A; text-shadow: none; -webkit-text-stroke: 0px transparent; }
+  55%       { color: #00CFFF; text-shadow: 0 0 30px rgba(0,207,255,0.7), 0 0 60px rgba(0,207,255,0.4); -webkit-text-stroke: 3px #0F172A; }
+  85%       { color: #00CFFF; text-shadow: 0 0 30px rgba(0,207,255,0.7); -webkit-text-stroke: 3px #0F172A; }
+  100%      { color: #0F172A; text-shadow: none; -webkit-text-stroke: 0px transparent; }
 }
 .hero-promo-slide--1.is-active .hero-promo-persen {
   animation: promo-color-shift 4.5s ease forwards;
