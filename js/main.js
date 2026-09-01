@@ -988,6 +988,7 @@ function initHeroWaitlistForm() {
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    SFX.playClick(); // A — suara klik tombol
     const { valid, nama, instagram } = validate();
     if (!valid) {
       const firstInvalid = form.querySelector('[aria-invalid="true"]');
@@ -1020,6 +1021,7 @@ function initHeroWaitlistForm() {
       submitBtn.disabled = true;
       // Stop flicker animation setelah submit berhasil
       submitBtn.style.animation = 'none';
+      SFX.playSuccess(); // B — suara success
       openThankyou();
 
     } catch (err) {
@@ -1043,6 +1045,74 @@ function initHeroWaitlistForm() {
     else clearError(igError);
   });
 }
+
+/* ═══════════════════════════════════════════════════════
+   10B. SOUND EFFECTS — Web Audio API (no external files)
+   ═══════════════════════════════════════════════════════ */
+const SFX = (() => {
+  let ctx = null;
+
+  function getCtx() {
+    if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)();
+    return ctx;
+  }
+
+  // A — Klik tombol: suara "click" pendek
+  function playClick() {
+    try {
+      const c = getCtx();
+      const o = c.createOscillator();
+      const g = c.createGain();
+      o.connect(g); g.connect(c.destination);
+      o.type = 'sine';
+      o.frequency.setValueAtTime(880, c.currentTime);
+      o.frequency.exponentialRampToValueAtTime(440, c.currentTime + 0.08);
+      g.gain.setValueAtTime(0.3, c.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.001, c.currentTime + 0.08);
+      o.start(c.currentTime);
+      o.stop(c.currentTime + 0.08);
+    } catch(_) {}
+  }
+
+  // B — Thank you popup: suara "success" ceria
+  function playSuccess() {
+    try {
+      const c = getCtx();
+      [523, 659, 784, 1047].forEach((freq, i) => {
+        const o = c.createOscillator();
+        const g = c.createGain();
+        o.connect(g); g.connect(c.destination);
+        o.type = 'sine';
+        const t = c.currentTime + i * 0.12;
+        o.frequency.setValueAtTime(freq, t);
+        g.gain.setValueAtTime(0.25, t);
+        g.gain.exponentialRampToValueAtTime(0.001, t + 0.25);
+        o.start(t);
+        o.stop(t + 0.25);
+      });
+    } catch(_) {}
+  }
+
+  // C — Flicker: suara buzz/elektrik pendek
+  function playBuzz() {
+    try {
+      const c = getCtx();
+      const bufSize = c.sampleRate * 0.05;
+      const buf = c.createBuffer(1, bufSize, c.sampleRate);
+      const data = buf.getChannelData(0);
+      for (let i = 0; i < bufSize; i++) data[i] = (Math.random() * 2 - 1) * 0.15;
+      const src = c.createBufferSource();
+      const g   = c.createGain();
+      src.buffer = buf;
+      src.connect(g); g.connect(c.destination);
+      g.gain.setValueAtTime(0.4, c.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.001, c.currentTime + 0.05);
+      src.start(c.currentTime);
+    } catch(_) {}
+  }
+
+  return { playClick, playSuccess, playBuzz };
+})();
 
 /* ═══════════════════════════════════════════════════════
    11. INIT — DOMContentLoaded
@@ -1171,6 +1241,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
       scheduleIdle();
     }
+  }
+
+  // C — Buzz sound saat flicker animasi iterasi (mobile only)
+  const flickerBtn = document.getElementById('hero-submit');
+  if (flickerBtn && 'ontouchstart' in window) {
+    flickerBtn.addEventListener('animationiteration', () => {
+      SFX.playBuzz();
+    });
   }
 
   // re-run spin after lucide renders icons
