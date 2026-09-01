@@ -43,7 +43,8 @@ function initNavbar() {
 
   // ── Mobile toggle ────────────────────────────────────
   if (toggle && navLinks) {
-    toggle.addEventListener('click', () => {
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
       const isOpen = navLinks.classList.toggle('open');
       toggle.setAttribute('aria-expanded', isOpen);
       toggle.setAttribute('aria-label', isOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi');
@@ -72,9 +73,14 @@ function initNavbar() {
 
     // close on outside click
     document.addEventListener('click', e => {
-      if (!navbar.contains(e.target) && !toggle.contains(e.target)) {
+      if (!navLinks.contains(e.target) && !toggle.contains(e.target)) {
         navLinks.classList.remove('open');
         toggle.setAttribute('aria-expanded', 'false');
+        const icon = toggle.querySelector('[data-lucide]');
+        if (icon) {
+          icon.setAttribute('data-lucide', 'menu');
+          if (typeof lucide !== 'undefined') lucide.createIcons();
+        }
       }
     });
   }
