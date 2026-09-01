@@ -1915,6 +1915,34 @@
 /* Hero trust spacing before form */
 .hero-trust { margin-bottom: 1.25rem; }
 
+/* ── Live Counter ── */
+.live-counter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.875rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #1E293B;
+}
+.live-counter-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #EF4444;
+  flex-shrink: 0;
+  animation: live-pulse 1.5s ease-in-out infinite;
+}
+@keyframes live-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239,68,68,0.6); }
+  50%       { box-shadow: 0 0 0 5px rgba(239,68,68,0); }
+}
+.live-counter-text { line-height: 1.4; }
+#live-viewers, #live-registered {
+  font-weight: 700;
+  color: #EF4444;
+}
+
 /* Secondary CTA link below form */
 .hero-secondary-cta {
   display: inline-flex;

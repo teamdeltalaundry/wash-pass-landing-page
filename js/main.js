@@ -1028,6 +1028,8 @@ function initHeroWaitlistForm() {
       // Stop flicker animation setelah submit berhasil
       submitBtn.style.animation = 'none';
       SFX.playSuccess(); // B — suara success
+      // Tambah 1 ke live counter registered
+      if (typeof window._liveAddRegistered === 'function') window._liveAddRegistered();
       openThankyou();
 
     } catch (err) {
@@ -1132,6 +1134,68 @@ document.addEventListener('DOMContentLoaded', () => {
   setNavbarHeightVar();
   initHeroWaitlistForm();
   initClubby();
+
+  // Live Counter — angka berubah random supaya terlihat real
+  const liveViewers    = document.getElementById('live-viewers');
+  const liveRegistered = document.getElementById('live-registered');
+
+  if (liveViewers && liveRegistered) {
+    let viewers = 12;
+
+    // Total registered akumulatif per jam — maks 59 di akhir hari
+    const cumulativeByHour = [
+      0,  1,  2,  2,  2,  3,   // 00-05 (dini hari — sepi)
+      5,  9, 14, 19, 24, 29,   // 06-11 (pagi — naik)
+      33, 37, 41, 44, 47, 50,  // 12-17 (siang-sore — puncak)
+      53, 55, 57, 58, 59, 59   // 18-23 (malam — melambat)
+    ];
+
+    function calcRegistered() {
+      const now  = new Date();
+      const hour = now.getHours();
+      const min  = now.getMinutes();
+      const base = cumulativeByHour[hour];
+      const next = hour < 23 ? cumulativeByHour[hour + 1] : 59;
+      // Interpolasi linear per menit
+      const interpolated = base + Math.floor((next - base) * (min / 60));
+      // Variasi kecil ±1
+      return Math.min(59, Math.max(0, interpolated + (Math.random() > 0.5 ? 1 : 0)));
+    }
+
+    let registered = calcRegistered();
+    liveRegistered.textContent = registered;
+
+    function randomDelta(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    // Update viewers setiap 30 detik
+    function updateViewers() {
+      const delta = randomDelta(-2, 3);
+      viewers = Math.max(8, Math.min(25, viewers + delta));
+      liveViewers.textContent = viewers;
+      setTimeout(updateViewers, 30000);
+    }
+
+    // Update registered setiap 3 menit
+    function updateRegistered() {
+      const fresh = calcRegistered();
+      if (fresh > registered) {
+        registered = fresh;
+        liveRegistered.textContent = registered;
+      }
+      setTimeout(updateRegistered, 180000);
+    }
+
+    setTimeout(updateViewers,    30000);
+    setTimeout(updateRegistered, 180000);
+
+    // +1 saat pengunjung submit form (maks 59)
+    window._liveAddRegistered = () => {
+      registered = Math.min(59, registered + 1);
+      liveRegistered.textContent = registered;
+    };
+  }
 
   // Promo overlay slide rotation
   const promoSlides = document.querySelectorAll('.hero-promo-slide');
