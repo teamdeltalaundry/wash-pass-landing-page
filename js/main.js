@@ -1028,8 +1028,6 @@ function initHeroWaitlistForm() {
       // Stop flicker animation setelah submit berhasil
       submitBtn.style.animation = 'none';
       SFX.playSuccess(); // B — suara success
-      // Tambah 1 ke live counter registered
-      if (typeof window._liveAddRegistered === 'function') window._liveAddRegistered();
       openThankyou();
 
     } catch (err) {
@@ -1136,71 +1134,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initClubby();
 
   // Live Counter — angka berubah random supaya terlihat real
-  const liveViewers    = document.getElementById('live-viewers');
-  const liveRegistered = document.getElementById('live-registered');
-
-  if (liveViewers && liveRegistered) {
-    let viewers = 12;
-
-    // Total registered akumulatif per jam — maks 59 di akhir hari
-    const cumulativeByHour = [
-      0,  1,  2,  2,  2,  3,   // 00-05 (dini hari — sepi)
-      5,  9, 14, 19, 24, 29,   // 06-11 (pagi — naik)
-      33, 37, 41, 44, 47, 50,  // 12-17 (siang-sore — puncak)
-      53, 55, 57, 58, 59, 59   // 18-23 (malam — melambat)
-    ];
-
-    function calcRegistered() {
-      const now  = new Date();
-      const hour = now.getHours();
-      const min  = now.getMinutes();
-      const base = cumulativeByHour[hour];
-      const next = hour < 23 ? cumulativeByHour[hour + 1] : 59;
-      // Interpolasi linear per menit
-      const interpolated = base + Math.floor((next - base) * (min / 60));
-      // Variasi kecil ±1
-      return Math.min(59, Math.max(0, interpolated + (Math.random() > 0.5 ? 1 : 0)));
-    }
-
-    let registered = calcRegistered();
-    liveRegistered.textContent = registered;
-
-    function randomDelta(min, max) {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
-    // Update viewers dengan interval bergilir: 7s → 3s → 10s → 15s → 30s → ulang
-    const viewerIntervals = [7000, 3000, 10000, 15000, 30000];
-    let viewerIntervalIdx = 0;
-
-    function updateViewers() {
-      const delta = randomDelta(-2, 3);
-      viewers = Math.max(8, Math.min(25, viewers + delta));
-      liveViewers.textContent = viewers;
-      viewerIntervalIdx = (viewerIntervalIdx + 1) % viewerIntervals.length;
-      setTimeout(updateViewers, viewerIntervals[viewerIntervalIdx]);
-    }
-
-    // Update registered setiap 3 menit
-    function updateRegistered() {
-      const fresh = calcRegistered();
-      if (fresh > registered) {
-        registered = fresh;
-        liveRegistered.textContent = registered;
-      }
-      setTimeout(updateRegistered, 180000);
-    }
-
-    setTimeout(updateViewers,    viewerIntervals[0]);
-    setTimeout(updateRegistered, 180000);
-
-    // +1 saat pengunjung submit form (maks 59)
-    window._liveAddRegistered = () => {
-      registered = Math.min(59, registered + 1);
-      liveRegistered.textContent = registered;
-    };
-  }
-
   // Promo overlay slide rotation
   const promoSlides = document.querySelectorAll('.hero-promo-slide');
   const promoOverlay = document.querySelector('.hero-promo-overlay');
@@ -1236,86 +1169,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(nextPromoSlide, durations[0]);
   }
 
-  // Bubble naik effect pada tombol wl-inline-submit
-  const submitBtn = document.getElementById('hero-submit');
-  if (submitBtn) {
-    let bubbleInterval = null;
-
-    function spawnBubble() {
-      const bubble = document.createElement('span');
-      bubble.classList.add('bubble-fullscreen');
-
-      const rect   = submitBtn.getBoundingClientRect();
-      const size   = Math.random() * 28 + 10;
-      const startX = rect.left + Math.random() * rect.width;
-      const startY = rect.top  + Math.random() * rect.height * 0.5;
-      const dur    = Math.random() * 0.8 + 1.0;
-      const drift  = (Math.random() - 0.5) * 80;
-
-      bubble.style.cssText = `
-        width:${size}px;
-        height:${size}px;
-        left:${startX}px;
-        top:${startY}px;
-        --dur:${dur}s;
-        --drift:${drift}px;
-      `;
-
-      document.body.appendChild(bubble);
-      bubble.addEventListener('animationend', () => bubble.remove());
-    }
-
-    // Desktop — hover
-    submitBtn.addEventListener('mouseenter', () => {
-      for (let i = 0; i < 5; i++) spawnBubble();
-      bubbleInterval = setInterval(() => {
-        spawnBubble(); spawnBubble(); spawnBubble();
-      }, 100);
-    });
-    submitBtn.addEventListener('mouseleave', () => {
-      clearInterval(bubbleInterval);
-      bubbleInterval = null;
-    });
-
-    // Mobile — otomatis setelah 4 detik idle, muncul 2 detik
-    if ('ontouchstart' in window) {
-      let idleTimer = null;
-
-      function startBurst() {
-        let count = 0;
-        bubbleInterval = setInterval(() => {
-          spawnBubble(); spawnBubble(); spawnBubble();
-          count++;
-          if (count >= 20) { // 20 × 100ms = 2 detik
-            clearInterval(bubbleInterval);
-            bubbleInterval = null;
-            scheduleIdle();
-          }
-        }, 100);
-      }
-
-      function scheduleIdle() {
-        clearTimeout(idleTimer);
-        idleTimer = setTimeout(startBurst, 4000);
-      }
-
-      // Reset timer setiap user sentuh layar
-      document.addEventListener('touchstart', () => {
-        clearInterval(bubbleInterval);
-        bubbleInterval = null;
-        scheduleIdle();
-      }, { passive: true });
-
-      // Stop permanen saat tombol diklik
-      submitBtn.addEventListener('click', () => {
-        clearTimeout(idleTimer);
-        clearInterval(bubbleInterval);
-        bubbleInterval = null;
-      });
-
-      scheduleIdle();
-    }
-  }
+  // C — Buzz sound saat flicker animasi iterasi (mobile only) — dihapus
 
   // re-run spin after lucide renders icons
   requestAnimationFrame(() => {
