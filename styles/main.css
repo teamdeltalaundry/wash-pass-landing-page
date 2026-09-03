@@ -391,7 +391,6 @@
   /* Slide container di mobile — relative positioning */
   /* Slide container di mobile — absolute positioning supaya tidak layout shift */
   .hero-promo-left {
-    min-height: 0 !important;
     position: relative;
   }
   .hero-promo-slide {

@@ -1143,29 +1143,27 @@ document.addEventListener('DOMContentLoaded', () => {
   // Set tinggi container = slide tertinggi supaya tidak layout shift (desktop & mobile)
   if (promoContainer && promoSlides.length > 0) {
     function setPromoHeight() {
-      const isMobileView = window.innerWidth <= 767;
       // Tampilkan semua slide sementara untuk ukur tinggi
       promoSlides.forEach(s => {
-        s.style.position = isMobileView ? 'relative' : 'relative';
-        s.style.opacity  = '1';
-        s.style.display  = 'block';
-        s.style.visibility = 'hidden'; // sembunyikan tapi tetap punya dimensi
+        s.style.position   = 'relative';
+        s.style.visibility = 'hidden';
+        s.style.opacity    = '0';
+        s.style.display    = 'block';
       });
       const maxH = Math.max(...Array.from(promoSlides).map(s => s.offsetHeight));
       promoContainer.style.minHeight = maxH + 'px';
       // Kembalikan ke state awal
       promoSlides.forEach((s, i) => {
         s.style.position   = '';
+        s.style.visibility = '';
         s.style.opacity    = '';
         s.style.display    = '';
-        s.style.visibility = '';
-        if (i !== 0) s.classList.remove('is-active');
+        s.classList.remove('is-active');
       });
       promoSlides[0].classList.add('is-active');
     }
 
     setPromoHeight();
-    // Recalculate saat resize
     window.addEventListener('resize', setPromoHeight);
   }
   if (promoSlides.length > 1) {
