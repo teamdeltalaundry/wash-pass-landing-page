@@ -217,7 +217,32 @@
   display: none;
 }
 
-/* ── Promo Overlay ── */
+/* ── Promo Left (animasi pindah ke kiri) ── */
+.hero-promo-left {
+  position: relative;
+  width: 100%;
+}
+
+/* ── Headline di overlay kanan ── */
+.hero-promo-headline {
+  font-size: clamp(1.75rem, 3.5vw, 3rem);
+  font-weight: 800;
+  color: #0F172A;
+  line-height: 1.15;
+  margin: 0 0 1rem;
+}
+.hero-promo-desc {
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  color: #0F172A;
+  line-height: 1.7;
+  margin: 0;
+  font-weight: 600;
+  text-shadow: 
+    1px 1px 0 rgba(255,255,255,0.8),
+    -1px -1px 0 rgba(255,255,255,0.8),
+    1px -1px 0 rgba(255,255,255,0.8),
+    -1px 1px 0 rgba(255,255,255,0.8);
+}
 .hero-promo-overlay {
   position: absolute;
   right: 3rem;
@@ -239,7 +264,7 @@
   width: 100%;
 }
 .hero-promo-slide.is-active {
-  position: relative;
+  position: absolute;
   opacity: 1;
   pointer-events: auto;
 }

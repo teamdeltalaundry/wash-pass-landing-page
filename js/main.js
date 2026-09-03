@@ -1135,9 +1135,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Live Counter — angka berubah random supaya terlihat real
   // Promo overlay slide rotation
-  const promoSlides = document.querySelectorAll('.hero-promo-slide');
+  const promoSlides  = document.querySelectorAll('.hero-promo-slide');
+  const promoContainer = document.querySelector('.hero-promo-left');
   const promoOverlay = document.querySelector('.hero-promo-overlay');
-  const promoArrow = document.getElementById('promo-arrow');
+  const promoArrow   = document.getElementById('promo-arrow');
+
+  // Set tinggi container = slide tertinggi supaya tidak layout shift
+  if (promoContainer && promoSlides.length > 0) {
+    // Tampilkan semua slide sementara untuk ukur tinggi
+    promoSlides.forEach(s => {
+      s.style.position = 'relative';
+      s.style.opacity  = '1';
+      s.style.display  = 'block';
+    });
+    const maxH = Math.max(...Array.from(promoSlides).map(s => s.offsetHeight));
+    promoContainer.style.minHeight = maxH + 'px';
+    // Kembalikan ke state awal
+    promoSlides.forEach((s, i) => {
+      s.style.position = '';
+      s.style.opacity  = '';
+      s.style.display  = '';
+      if (i !== 0) s.classList.remove('is-active');
+    });
+    promoSlides[0].classList.add('is-active');
+  }
   if (promoSlides.length > 1) {
     const durations = [4500, 3500];
     let current = 0;
