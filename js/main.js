@@ -1140,8 +1140,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const promoOverlay = document.querySelector('.hero-promo-overlay');
   const promoArrow   = document.getElementById('promo-arrow');
 
-  // Set tinggi container = slide tertinggi supaya tidak layout shift
-  if (promoContainer && promoSlides.length > 0) {
+  // Set tinggi container = slide tertinggi supaya tidak layout shift (desktop only)
+  if (promoContainer && promoSlides.length > 0 && window.innerWidth > 767) {
     // Tampilkan semua slide sementara untuk ukur tinggi
     promoSlides.forEach(s => {
       s.style.position = 'relative';

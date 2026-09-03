@@ -389,15 +389,22 @@
     font-size: 0.85rem;
   }
   /* Slide container di mobile — relative positioning */
-  .hero-promo-slide {
+  .hero-promo-left {
+    min-height: 0 !important;
     position: relative;
-    top: auto;
-    left: auto;
+  }
+  .hero-promo-slide {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
     text-align: center;
     width: 100%;
+    opacity: 1 !important;
   }
   .hero-promo-slide:not(.is-active) {
-    display: none;
+    display: none !important;
+    position: absolute !important;
+    pointer-events: none;
   }
   /* Sembunyikan arrow di mobile */
   .hero-promo-arrow {
