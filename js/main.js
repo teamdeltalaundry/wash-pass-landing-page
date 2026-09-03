@@ -1140,24 +1140,33 @@ document.addEventListener('DOMContentLoaded', () => {
   const promoOverlay = document.querySelector('.hero-promo-overlay');
   const promoArrow   = document.getElementById('promo-arrow');
 
-  // Set tinggi container = slide tertinggi supaya tidak layout shift (desktop only)
-  if (promoContainer && promoSlides.length > 0 && window.innerWidth > 767) {
-    // Tampilkan semua slide sementara untuk ukur tinggi
-    promoSlides.forEach(s => {
-      s.style.position = 'relative';
-      s.style.opacity  = '1';
-      s.style.display  = 'block';
-    });
-    const maxH = Math.max(...Array.from(promoSlides).map(s => s.offsetHeight));
-    promoContainer.style.minHeight = maxH + 'px';
-    // Kembalikan ke state awal
-    promoSlides.forEach((s, i) => {
-      s.style.position = '';
-      s.style.opacity  = '';
-      s.style.display  = '';
-      if (i !== 0) s.classList.remove('is-active');
-    });
-    promoSlides[0].classList.add('is-active');
+  // Set tinggi container = slide tertinggi supaya tidak layout shift (desktop & mobile)
+  if (promoContainer && promoSlides.length > 0) {
+    function setPromoHeight() {
+      const isMobileView = window.innerWidth <= 767;
+      // Tampilkan semua slide sementara untuk ukur tinggi
+      promoSlides.forEach(s => {
+        s.style.position = isMobileView ? 'relative' : 'relative';
+        s.style.opacity  = '1';
+        s.style.display  = 'block';
+        s.style.visibility = 'hidden'; // sembunyikan tapi tetap punya dimensi
+      });
+      const maxH = Math.max(...Array.from(promoSlides).map(s => s.offsetHeight));
+      promoContainer.style.minHeight = maxH + 'px';
+      // Kembalikan ke state awal
+      promoSlides.forEach((s, i) => {
+        s.style.position   = '';
+        s.style.opacity    = '';
+        s.style.display    = '';
+        s.style.visibility = '';
+        if (i !== 0) s.classList.remove('is-active');
+      });
+      promoSlides[0].classList.add('is-active');
+    }
+
+    setPromoHeight();
+    // Recalculate saat resize
+    window.addEventListener('resize', setPromoHeight);
   }
   if (promoSlides.length > 1) {
     const durations = [4500, 3500];
