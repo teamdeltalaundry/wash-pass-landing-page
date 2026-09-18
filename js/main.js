@@ -1199,6 +1199,64 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // C — Buzz sound saat flicker animasi iterasi (mobile only) — dihapus
 
+  // ── Legal Modals (Privasi & Syarat) ──────────────────
+  function initLegalModals() {
+    const modals = {
+      privasi: document.getElementById('modal-privasi'),
+      syarat:  document.getElementById('modal-syarat'),
+    };
+    const btns = {
+      open: {
+        privasi: document.getElementById('btn-privasi'),
+        syarat:  document.getElementById('btn-syarat'),
+      },
+      close: {
+        privasi: [document.getElementById('btn-close-privasi'), document.getElementById('btn-close-privasi-2')],
+        syarat:  [document.getElementById('btn-close-syarat'),  document.getElementById('btn-close-syarat-2')],
+      }
+    };
+
+    function openModal(key) {
+      if (!modals[key]) return;
+      modals[key].hidden = false;
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal(key) {
+      if (!modals[key]) return;
+      modals[key].hidden = true;
+      document.body.style.overflow = '';
+    }
+
+    // Open
+    Object.keys(btns.open).forEach(key => {
+      const btn = btns.open[key];
+      if (btn) btn.addEventListener('click', e => { e.preventDefault(); openModal(key); });
+    });
+
+    // Close via buttons
+    Object.keys(btns.close).forEach(key => {
+      btns.close[key].forEach(btn => {
+        if (btn) btn.addEventListener('click', () => closeModal(key));
+      });
+    });
+
+    // Close via overlay click
+    Object.keys(modals).forEach(key => {
+      if (modals[key]) {
+        modals[key].addEventListener('click', e => {
+          if (e.target === modals[key]) closeModal(key);
+        });
+      }
+    });
+
+    // Close via Escape
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') Object.keys(modals).forEach(k => closeModal(k));
+    });
+  }
+
+  initLegalModals();
+
   // re-run spin after lucide renders icons
   requestAnimationFrame(() => {
     setTimeout(initSpinIcons, 50);

@@ -1913,6 +1913,14 @@
 }
 .wl-inline-privacy [data-lucide] { color: var(--clr-success); flex-shrink: 0; }
 
+.wl-inline-gdpr {
+  font-size: 0.75rem;
+  color: var(--clr-gray-400);
+  text-align: center;
+  margin: 0;
+  line-height: 1.5;
+}
+
 /* Hero trust spacing before form */
 .hero-trust { margin-bottom: 1.25rem; }
 
@@ -2171,3 +2179,29 @@
   .wl-dialog { padding: 1.5rem 1.25rem; border-radius: 16px 16px 0 0; align-self: flex-end; max-height: 95dvh; }
   .wl-overlay { align-items: flex-end; padding: 0; }
 }
+
+/* ── Legal Modal (Privasi & Syarat) ── */
+.legal-dialog {
+  max-height: 80dvh;
+  overflow-y: auto;
+}
+.legal-content h3 {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #1E293B;
+  margin: 1.25rem 0 0.375rem;
+}
+.legal-content p {
+  font-size: 0.875rem;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0 0 0.5rem;
+}
+.legal-content ul {
+  font-size: 0.875rem;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0 0 0.5rem;
+  padding-left: 1.25rem;
+}
+.legal-content ul li { margin-bottom: 0.25rem; }
